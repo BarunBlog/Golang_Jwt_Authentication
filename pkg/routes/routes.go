@@ -7,15 +7,18 @@ import (
 )
 
 var InitRouter = func() *gin.Engine {
-	router := gin.Default()
+	router := gin.Default() // Creates a new Gin router instance
 
+	// Grouped everything under /api
 	api := router.Group("/api")
 	{
-		api.POST("/token", controllers.GenerateToken)
-		api.POST("/user/register", controllers.RegisterUser)
+		api.POST("/token/", controllers.GenerateToken)
+		api.POST("/user/register/", controllers.RegisterUser)
 		secured := api.Group("/secured").Use(middlewares.Auth())
 		{
-			secured.GET("/ping", controllers.Ping)
+			// We need to secure all the endpoints that will come under the api/secured/ routes.
+			// We tell GIN to use the middleware that we created.
+			secured.GET("/ping/", controllers.Ping)
 		}
 	}
 

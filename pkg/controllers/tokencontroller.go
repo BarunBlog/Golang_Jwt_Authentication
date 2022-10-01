@@ -36,6 +36,7 @@ func GenerateToken(context *gin.Context) {
 	if credentialError != nil {
 		context.JSON(http.StatusUnauthorized, gin.H{"error": "invalid credentials"})
 		context.Abort()
+		return
 	}
 
 	tokenString, err := auth.GenerateJWT(user.Email, user.Username)
