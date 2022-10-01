@@ -22,7 +22,7 @@ func RegisterUser(context *gin.Context) {
 		context.Abort()
 		return
 	}
-	record := models.db.Create(&user)
+	record := models.DB.Create(&user)
 	if record.Error != nil {
 		context.JSON(http.StatusInternalServerError, gin.H{"error": record.Error.Error()})
 		context.Abort()

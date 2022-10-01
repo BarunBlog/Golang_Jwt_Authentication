@@ -6,7 +6,7 @@ import (
 	"golang.org/x/crypto/bcrypt"
 )
 
-var db *gorm.DB
+var DB *gorm.DB
 
 type User struct {
 	gorm.Model
@@ -18,8 +18,8 @@ type User struct {
 
 func init() {
 	config.Connect()
-	db = config.GetDb()
-	db.AutoMigrate(&User{})
+	DB = config.GetDb()
+	DB.AutoMigrate(&User{})
 }
 
 func (user *User) HashPassword(password string) error {

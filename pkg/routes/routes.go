@@ -6,7 +6,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-var initRouter = func() *gin.Engine {
+var InitRouter = func() *gin.Engine {
 	router := gin.Default()
 
 	api := router.Group("/api")
