@@ -8,6 +8,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+// request body format
 type TokenRequest struct {
 	Email    string `json:"email"`
 	Password string `json:"password"`
